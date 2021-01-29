@@ -4,7 +4,7 @@
 
 ![Image description](https://github.com/RHULPsychology/Important_Tutorials/blob/master/Windows_Prep_for_Cluster/turn-windows-subsystem-for-linux-beta.jpg)
 
-- After Restart, go to Microsoft App Store and install Ubuntu 18.04 LTS App:
+- After Restart, go to Microsoft App Store and install Ubuntu 20.04 LTS App:
 
 ![Image description](https://github.com/RHULPsychology/Important_Tutorials/blob/master/Windows_Prep_for_Cluster/store.png)
 
