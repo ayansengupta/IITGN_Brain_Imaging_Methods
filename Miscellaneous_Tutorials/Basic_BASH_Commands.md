@@ -1,6 +1,5 @@
   # Basic Bash Commands
   
-  
   - Essential_commands (Look at --help):
       
       Check current path (location):
@@ -63,8 +62,7 @@
       3. if - elif - else
 
       ```
-
-    - Loop: 
+- Loop: 
 
       Tutorial link: 
 
@@ -82,7 +80,7 @@
 
       ```
 
-    - Exercises: 
+- Exercises: 
 
       a. Print your name for 5 times by writing a script.
 
