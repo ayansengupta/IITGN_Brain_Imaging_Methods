@@ -1,5 +1,7 @@
+  # Basic Bash Commands
   
-    - Essential_commands (Look at --help):
+  
+  - Essential_commands (Look at --help):
       
       Check current path (location):
       
