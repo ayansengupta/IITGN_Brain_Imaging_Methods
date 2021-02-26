@@ -11,6 +11,7 @@ mywin = visual.Window([800,600], monitor="demo_monitor", units="deg")
 
 #create some stimuli
 grating = visual.GratingStim(win=mywin, mask="circle", size=10, pos=[-8,0], sf=3)
+gabor_grating = visual.GratingStim(win=mywin, mask="circle", size=10, pos=[8,0], sf=3)
 fixation = visual.GratingStim(win=mywin, size=0.5, pos=[0,0], sf=0, rgb=-1)
 
 #draw the stimuli and update the window
