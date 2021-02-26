@@ -16,6 +16,7 @@ fixation = visual.GratingStim(win=mywin, size=0.5, pos=[0,0], sf=0, rgb=-1)
 
 #draw the stimuli and update the window
 grating.draw()
+gabor_grating.draw()
 fixation.draw()
 mywin.update()
 
