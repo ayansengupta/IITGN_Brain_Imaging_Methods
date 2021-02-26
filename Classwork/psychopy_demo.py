@@ -1,0 +1,26 @@
+from psychopy import visual, core  # import some libraries from PsychoPy
+
+#create a window
+mywin = visual.Window([800,600], monitor="demo_monitor", units="deg")
+
+#create some stimuli
+grating = visual.GratingStim(win=mywin, mask="circle", size=10, pos=[-5,0], sf=10)
+fixation = visual.GratingStim(win=mywin, size=0.5, pos=[0,0], sf=0, rgb=-1)
+
+#draw the stimuli and update the window
+grating.draw()
+fixation.draw()
+mywin.update()
+
+#pause, so you get a chance to see it!
+core.wait(10.0)
+frame_refresh=50
+trial_duration=10
+number_of_trials=1
+total_frames=frame_refresh*trial_duration*number_of_trials
+
+for frameN in range(total_frames):
+    grating.setPhase(0.05, '+')  # advance phase by 0.05 of a cycle
+    grating.draw()
+    fixation.draw()
+    mywin.update()
