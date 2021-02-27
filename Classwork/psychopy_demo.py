@@ -38,5 +38,6 @@ for frameN in range(total_frames):
     grating.setPhase(0.05, '+')  # advance phase by 0.05 of a cycle
     gabor_grating.setPhase(0.05, '-')
     grating.draw()
+    gabor_grating.draw()
     fixation.draw()
     mywin.update()
