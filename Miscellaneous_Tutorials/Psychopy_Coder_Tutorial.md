@@ -33,17 +33,24 @@ core.wait(10.0)
 
 ```
 
-
-The above code creates a stimulus that doesn't does not change over time. First a display window is created with a size of 800X600 pixels on the demo_monitor with the following command. 
+The above code creates a stimulus that doesn't does not change over time. First a display window ```mywin``` is created with a size of 800X600 pixels on the demo_monitor with the following command. 
 
 ```mywin = visual.Window([800,600], monitor="demo_monitor", units="deg")```
 
+Two different grating stimuli (sine and gabor) are created by the ```visual.GratingStim()``` function. 
 
+```
+#create some stimuli
+grating = visual.GratingStim(win=mywin, mask="circle", size=10, pos=[-8,0], sf=3)
 
+#introduced a gabor grating
+#it is a sine grating with a gaussian on top
+gabor_grating = visual.GratingStim(win=mywin, mask="gauss", size=10, pos=[8,0], sf=3)
+```
 
+Fixation point is also created by the ```visual.GratingStim()``` function by modifying the spatial frequency to zero ```sf=0```.
 
-
-
+After drawing the stimulation of the gratingstims on the window ```mywin```, it is updated with the ```mywin.update()``` command and then ```core.wait(10.0)``` keeps the stimulation on the screen for 10 sec.
 
 
 # Create a static stimulation for-looping over frames
