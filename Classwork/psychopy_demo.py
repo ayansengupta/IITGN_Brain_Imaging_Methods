@@ -38,22 +38,32 @@ for frameN in range(total_frames):
     fixation.draw()
     mywin.update()
 
+    
+    
 # creating the dynamic stimulation by modifying phase of the gratings
-frame_refresh=50
-trial_duration=10
-number_of_trials=1
-total_frames=frame_refresh*trial_duration*number_of_trials
-
 for frameN in range(total_frames):
     
-    if (frameN % frame_refresh) < 25 :
+    grating.setPhase(0.05, '+')  # advance phase by 0.05 of a cycle
+    gabor_grating.setPhase(0.05, '-')
+    grating.draw()
+    gabor_grating.draw()
+    fixation.draw()
+    mywin.update()
+    
+    
+    
+# creating the dynamic flickering stimulation with 50% duty cycle
+# Screen refresh rate is 50 (50 frames in 1 sec), which means for 50% duty cycle the stimulation is ON for 25 frames and OFF for 25 frames
+
+for frameN in range(total_frames):
+    if (frameN % frame_refresh) < 25 :     # ON phase
         grating.setPhase(0.05, '+')  # advance phase by 0.05 of a cycle
         gabor_grating.setPhase(0.05, '-')
         grating.draw()
         gabor_grating.draw()
         fixation.draw()
         mywin.update()
-    else:
+    else: # OFF phase
         mywin.update()
     
     
