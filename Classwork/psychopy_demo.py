@@ -26,9 +26,19 @@ mywin.update()
 #pause, so you get a chance to see it!
 core.wait(10.0)
 
+# creating static stimulation by looping over frames
+frame_refresh=50
+trial_duration=10
+number_of_trials=1
+total_frames=frame_refresh*trial_duration*number_of_trials
 
+for frameN in range(total_frames):
+    grating.draw()
+    gabor_grating.draw()
+    fixation.draw()
+    mywin.update()
 
-# creating the dynamic stimulation
+# creating the dynamic stimulation by modifying phase of the gratings
 frame_refresh=50
 trial_duration=10
 number_of_trials=1
