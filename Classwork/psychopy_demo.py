@@ -3,9 +3,12 @@ from datetime import datetime # import datetime library for timestamp
 
 # Set logging level and create log file
 
-logging.console.setLevel(logging.EXP)
-timestamp=datetime.now()
-lastLog = logging.LogFile("lastRun_"+timestamp.strftime("%Y%m%d-%H%M%S")+".log", level=logging.EXP, filemode='w')
+# this is for displaying logs on the console, if needed can be commented out
+#logging.console.setLevel(logging.EXP)
+
+# getting the timestamp and including it into the logfile name
+timestamp=datetime.now().strftime("%Y%m%d-%H%M%S")
+lastLog = logging.LogFile("lastRun_"+timestamp+".log", level=logging.INFO, filemode='w')
 
 
 
