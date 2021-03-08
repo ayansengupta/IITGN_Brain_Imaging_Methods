@@ -10,15 +10,19 @@ mywin = visual.Window([800,600], monitor="demo_monitor", units="deg")
 
 
 #create some stimuli
-grating = visual.GratingStim(win=mywin, mask="circle", size=10, pos=[-8,0], sf=3)
+grating = visual.GratingStim(win=mywin, mask="circle", size=5, pos=[-8,5], sf=3)
 
 #introduced a gabor grating
 #it is a sine grating with a gaussian on top
 gabor_grating = visual.GratingStim(win=mywin, mask="gauss", size=10, pos=[8,0], sf=3)
 fixation = visual.GratingStim(win=mywin, size=0.5, pos=[0,0], sf=0, rgb=-1)
 
+#introduce an image as a stimulation
+iitgn_logo = visual.ImageStim(win=mywin, image="Psychopy_IITGN_Logo.png", size=5, pos=[-8,-5], units="deg")
+
 #draw the stimuli and update the window
 grating.draw()
+iitgn_logo.draw()
 gabor_grating.draw()
 fixation.draw()
 mywin.update()
@@ -35,6 +39,7 @@ total_frames=frame_refresh*trial_duration*number_of_trials
 for frameN in range(total_frames):
     grating.draw()
     gabor_grating.draw()
+    iitgn_logo.draw()
     fixation.draw()
     mywin.update()
 
@@ -47,6 +52,7 @@ for frameN in range(total_frames):
     gabor_grating.setPhase(0.05, '-')
     grating.draw()
     gabor_grating.draw()
+    iitgn_logo.draw()
     fixation.draw()
     mywin.update()
     
@@ -56,6 +62,7 @@ for frameN in range(total_frames):
 # Screen refresh rate is 50 (50 frames in 1 sec), which means for 50% duty cycle the stimulation is ON for 25 frames and OFF for 25 frames
 
 for frameN in range(total_frames):
+    iitgn_logo.draw()
     if (frameN % frame_refresh) < 25 :     # ON phase
         grating.setPhase(0.05, '+')  # advance phase by 0.05 of a cycle
         gabor_grating.setPhase(0.05, '-')
