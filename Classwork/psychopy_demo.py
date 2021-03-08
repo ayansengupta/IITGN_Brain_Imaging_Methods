@@ -1,4 +1,13 @@
-from psychopy import visual, core  # import some libraries from PsychoPy
+from psychopy import visual, core, logging  # import some libraries from PsychoPy, include logging for creating logfiles
+from datetime import datetime # import datetime library for timestamp
+
+# Set logging level and create log file
+
+logging.console.setLevel(logging.EXP)
+timestamp=datetime.now()
+lastLog = logging.LogFile("lastRun_"+timestamp.strftime("%Y%m%d-%H%M%S")+".log", level=logging.EXP, filemode='w')
+
+
 
 #create a window
 #the demo monitor specs are as follows 
@@ -29,6 +38,7 @@ mywin.update()
 
 #pause, so you get a chance to see it!
 core.wait(10.0)
+logging.flush()
 
 # creating static stimulation by looping over frames
 frame_refresh=50
@@ -42,6 +52,7 @@ for frameN in range(total_frames):
     iitgn_logo.draw()
     fixation.draw()
     mywin.update()
+    logging.flush()
 
     
     
@@ -55,6 +66,7 @@ for frameN in range(total_frames):
     iitgn_logo.draw()
     fixation.draw()
     mywin.update()
+    logging.flush()
     
     
     
@@ -63,15 +75,18 @@ for frameN in range(total_frames):
 
 for frameN in range(total_frames):
     iitgn_logo.draw()
+    fixation.draw()
+
     if (frameN % frame_refresh) < 25 :     # ON phase
         grating.setPhase(0.05, '+')  # advance phase by 0.05 of a cycle
         gabor_grating.setPhase(0.05, '-')
         grating.draw()
         gabor_grating.draw()
-        fixation.draw()
         mywin.update()
     else: # OFF phase
         mywin.update()
+      
+    logging.flush()
     
     
     
