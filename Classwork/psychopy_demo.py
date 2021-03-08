@@ -1,5 +1,6 @@
-from psychopy import visual, core, logging  # import some libraries from PsychoPy, include logging for creating logfiles
+from psychopy import visual, core, logging, event  # import some libraries from PsychoPy, include logging for creating logfiles
 from datetime import datetime # import datetime library for timestamp
+from psychopy.hardware import keyboard # import keyboard library
 
 # Set logging level and create log file
 
@@ -10,6 +11,8 @@ from datetime import datetime # import datetime library for timestamp
 timestamp=datetime.now().strftime("%Y%m%d-%H%M%S")
 lastLog = logging.LogFile("lastRun_"+timestamp+".log", level=logging.INFO, filemode='w')
 
+# create keyboard object
+kb = keyboard.Keyboard()
 
 
 #create a window
@@ -40,7 +43,7 @@ fixation.draw()
 mywin.update()
 
 #pause, so you get a chance to see it!
-core.wait(10.0)
+core.wait(5.0)
 logging.flush()
 
 # creating static stimulation by looping over frames
@@ -90,6 +93,68 @@ for frameN in range(total_frames):
         mywin.update()
       
     logging.flush()
+
+### set up a realistic experiment
+
+Participant_Instruction = visual.TextStim(mywin, 'Welcome, Are you ready?', color=(0, 1, 0), colorSpace='rgb')    
+Participant_Instruction.draw()
+mywin.update()
+Subject_Response = event.waitKeys(keyList=['1', '2'])
+print(Subject_Response)
+if '1' in Subject_Response:
+
+    # Scanner waiting instruction
+    scanner_wait = visual.TextStim(mywin, 'Great, Waiting for Scanner Trigger', color=(0, 1, 0), colorSpace='rgb')    
+    scanner_wait.draw()
+    mywin.update()
+
+    keys = event.waitKeys(keyList=['t'])
     
+    for frameN in range(total_frames):
     
+        grating.setPhase(0.05, '+')  # advance phase by 0.05 of a cycle
+        gabor_grating.setPhase(0.05, '-')
+        
+        fixation.draw()
+        grating.draw()
+        iitgn_logo.draw()
+        
+        if (frameN % frame_refresh) < 25 :     # ON phase
+            gabor_grating.draw()
+            mywin.update()
+        else: # OFF phase
+            mywin.update()
+          
+        logging.flush()  
+
+    Participant_Instruction.setText('Did the gabor grating flicker?')
+    Participant_Instruction.draw()
+    mywin.update()
+    Subject_Response = event.waitKeys(keyList=['1', '2'])
+
+    for frameN in range(total_frames):
     
+        grating.setPhase(0.05, '+')  # advance phase by 0.05 of a cycle
+        gabor_grating.setPhase(0.05, '-')
+        
+        fixation.draw()
+        gabor_grating.draw()
+        iitgn_logo.draw()
+        
+        if (frameN % frame_refresh) < 25 :     # ON phase
+            grating.draw()
+            mywin.update()
+        else: # OFF phase
+            mywin.update()
+          
+        logging.flush()  
+
+    Participant_Instruction.setText('Did the sine grating flicker?')
+    Participant_Instruction.draw()
+    mywin.update()
+    Subject_Response = event.waitKeys(keyList=['1', '2'])
+    
+    Participant_Instruction.setText('End of the Experiment. Thank you')
+    Participant_Instruction.draw()
+    mywin.update()
+    core.wait(5)
