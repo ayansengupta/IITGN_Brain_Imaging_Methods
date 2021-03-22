@@ -1,6 +1,5 @@
 # HeuDiConv setup
 
-
 1. Check whether you have a previously created heudiconv environment and whether the version of python you have used for the heudiconv environment is 3.7 or not. For doing that open a terminal and Use the following command. If you check the output, in this case line 3 shows that the python version is 3.7.10. 
    ```
    (base) spark@LAPTOP-UMDAETEC:~$ conda list -n heudiconv | grep "python"
@@ -40,4 +39,18 @@
    
    ```
    
+5. Generate the heuristic files and dicominfo.tsv file with the following command
+
+   ```
+   (base) spark@LAPTOP-UMDAETEC:~$ heudiconv -d /mnt/c/Users/User/Documents/Miscellaneous/sub-{subject}/ses-{session}/SCANS/6/DICOM/*.dcm -s 01 -ss 005 -f convertall -c none -o /mnt/c/Users/User/Documents/Miscellaneous/
+   ```
+   
+6. After careful inspection of the diconminfo.tsv file, you will need to modify the ```heuristic_template.py``` file according to your requirements. The template file is provided at https://github.com/ayansengupta/IITGN_Brain_Imaging_Methods/blob/main/Miscellaneous_Tutorials/heuristic_template.py. 
+
+7. The actual nifti conversion is done by the following command
+
+   ```
+   (base) spark@LAPTOP-UMDAETEC:~$ heudiconv -d /mnt/c/Users/User/Documents/Miscellaneous/Raw_Dicom/sub-{subject}/ses-{session}/SCANS/6/DICOM/*.dcm -s 01 -ss 005 -f       /mnt/c/Users/User/Documents/Miscellaneous/heuristic_template.py -c dcm2niix -b notop --overwrite -o /mnt/c/Users/User/Documents/Miscellaneous/
+
+   ```
    
