@@ -1,7 +1,7 @@
 # Check whether you have heudiconv environment setup.
 
 
-``` bash
+```
 (base) spark@LAPTOP-UMDAETEC:~$ conda env list
 # conda environments:
 #
