@@ -1,4 +1,7 @@
-# Check whether you have heudiconv environment setup.
+# HeuDiConv setup
+
+
+1. Check whether you have heudiconv environment setup.
 
 
 ```
