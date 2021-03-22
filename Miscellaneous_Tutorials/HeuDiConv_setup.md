@@ -54,3 +54,9 @@
 
    ```
    
+8. You can view the gzipped nifti file with the following command
+
+   ```
+   (base) spark@LAPTOP-UMDAETEC:~$ fsleyes /mnt/c/Users/User/Documents/Miscellaneous/BIDS_Dataset/sub-01/ses-005/func/sub-01_task-rs_run-001.nii.gz
+   ```
+   
