@@ -46,7 +46,8 @@ Navigate to the required folder where you want to keep your data
 
 Then use the following command to download and store the data in gzip format. Use WinRar or other software to extract the data
 
-```wget -c http://fsl.fmrib.ox.ac.uk/fslcourse/downloads/fmri1.tar.gz  
+```
+wget -c http://fsl.fmrib.ox.ac.uk/fslcourse/downloads/fmri1.tar.gz  
 ```
 
 
